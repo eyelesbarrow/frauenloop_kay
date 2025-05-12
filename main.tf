@@ -2,7 +2,9 @@ provider "azurerm" {
   features {}
 
   subscription_id = "4f61e6d8-8e0a-4fb2-aa80-8e32ec76fdcc"
-  use_cli =false
+  tenant_id = "bfc7d022-5849-4153-be2f-6adefbf76756" 
+
+  use_cli =true
 }
 
 resource "azurerm_resource_group" "frauenloop" {
