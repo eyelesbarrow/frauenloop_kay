@@ -15,6 +15,19 @@ resource "azurerm_resource_group" "frauenloop" {
   location = "eastus"
 }
 
-For the creation of Azure storage, Hashicorp recommends: 
-https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
+
+resource "azurerm_virtual_network" "vm_kay_vnet" {
+  name                = "vm-kay-vnet"
+  location            = azurerm_resource_group.frauenloop.location
+  resource_group_name = azurerm_resource_group.frauenloop.name
+  address_space       = ["10.0.0.0/16"]
+}
+
+resource "azurerm_subnet" "default" {
+  name                 = "default"
+  resource_group_name  = azurerm_resource_group.frauenloop.name
+  virtual_network_name = azurerm_virtual_network.vm_kay_vnet.name
+  address_prefixes     = ["10.0.0.0/24"]
+}
+
 
