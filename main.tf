@@ -177,3 +177,18 @@ resource "azurerm_static_web_app" "kay_app" {
 
   
 }
+
+# Static Web App
+resource "azurerm_static_web_app" "kayFlask" {
+  name                         = "kayFlask"
+  resource_group_name          = azurerm_resource_group.frauenloop.name
+  location                     = "East US 2"
+  sku_tier                     = "Free"
+  sku_size                     = "Free"
+
+  app_settings = {
+    "allowConfigFileUpdates" = "true"
+  }
+
+  
+}
